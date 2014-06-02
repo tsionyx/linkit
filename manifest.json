@@ -18,7 +18,8 @@
       "matches": ["http://*/*", "https://*/*", "file://*/*"],
       "js": [
         "jquery-2.1.1.min.js",
-        "background.js"
+        "background.js",
+        "URI.js"
       ],
       "run_at": "document_end",
       "all_frames": false
