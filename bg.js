@@ -3,17 +3,18 @@
 var link = null;
 
 // sends link to page when clicked on our menu item
-var share_link = function(info, tab) {
+var shareLink = function(info, tab) {
     if(!link)
         return;
 
     console.log("bg:context_menu_linkit_clicked:'"+link+"'");
-    var share_link_port = chrome.tabs.connect(tab.id, {name:"share_link"});
-    share_link_port.postMessage(link);
-}
+    var shareLinkPort = chrome.tabs.connect(tab.id, {name:"share_link"});
+    shareLinkPort.postMessage(link);
+    link = null;
+};
 
 chrome.contextMenus.create(
-    {"title": "Link It too!", "onclick": share_link, "contexts": ["all"]});
+    {"title": "Link It!", "onclick": shareLink, "contexts": ["all"]});
 
 // saves the link to element when it's right-clicked
 chrome.runtime.onConnect.addListener(function(port) {
