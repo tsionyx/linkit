@@ -46,7 +46,7 @@ var goToLink = function(url) {
         return;
     console.log("go_to: fragment: "+fragment);
     
-    fragment = fragment.toLowerCase();
+    //fragment = fragment.toLowerCase();
     if (fragment.charAt(0) != '$') {
         console.log("go_to: head_fragment: "+fragment.charAt(0));
         return; // not our case
@@ -67,7 +67,9 @@ var goToLink = function(url) {
     }
     else {
         console.log("go_to: idIndex: "+idIndex);
-        start = $("#"+fragment.slice(idIndex+4));
+        var id = "#"+fragment.slice(idIndex+4)
+        console.log("go_to: id: "+ id);
+        start = $(id);
     }
     console.log("go_to: start: "+start.prop('nodeName'));
     fragment = fragment.slice(0, idIndex);
@@ -84,10 +86,14 @@ var goToLink = function(url) {
     }
     console.log("go_to: final: "+start.prop('outerHTML'));
     //start.goTo();
-    
+
     $("html, body").animate({ scrollTop: start.offset().top }, "fast");
+    $(window).on('beforeunload', function() {
+        $(window).scrollTop(start.offset().top);
+    });
     start.fadeOut(500).fadeIn(300);
 };
+
 
 goToLink(url);
 
