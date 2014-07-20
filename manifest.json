@@ -1,14 +1,14 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Link It",
   "description": "This extension makes every item in a page shareable. You can send the link to someone and he'll be able to open it at the same place.",
-  "version": "1.0",
+  "version": "0.1",
   "permissions": [
     "contextMenus",
     "tabs"
   ],
   "background": {
-    "scripts": ["linkit.js"]
+    "scripts": ["bg.js"]
   },
   "browser_action": {
     "default_icon": "icon.png"
@@ -18,10 +18,19 @@
       "matches": ["http://*/*", "https://*/*", "file://*/*"],
       "js": [
         "jquery-2.1.1.min.js",
-        "background.js",
+        "jq_ext.js",
         "URI.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": ["http://*/*", "https://*/*", "file://*/*"],
+      "js": [
+        "linkit.js"
       ],
       "run_at": "document_end",
       "all_frames": false
-    }]
+    }
+    ]
 }
