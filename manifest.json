@@ -1,8 +1,8 @@
 {
-  "manifest_version": 5,
+  "manifest_version": 2,
   "name": "Link It",
-  "description": "This extension makes every item in a page shareable. You can send the link to someone and he'll be able to open it at the same place.",
-  "version": "0.3",
+  "description": "This extension makes every item in a page shareable. You can send the link to someone and he'll be able to open it at the same place",
+  "version": "0.0.3",
   "permissions": [
     "contextMenus",
     "tabs"
@@ -33,5 +33,6 @@
     "16":  "icon.png",
     "48":  "icon.png",
     "128": "icon.png"
-   }
+  }
 }
+
